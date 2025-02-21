@@ -13,6 +13,13 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket = "terraform-state-sample-slack-bolt"
+    region = "ap-northeast-1"
+    key = "main/terraform.tfstate"
+    encrypt = true
+  }
 }
 
 provider "aws" {
