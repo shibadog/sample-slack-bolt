@@ -20,6 +20,16 @@ terraform {
     key = "main/terraform.tfstate"
     encrypt = true
   }
+
+  # WebDAVでstate管理
+  # backend "http" {
+  #   address = "http://localhost/dav/terraform/sample-slack-bolt/main.tfstate"
+  #   update_method = "PUT"
+  # }
+  # 途中で切り替えるには以下のように実施する
+  # terraform init -migrate-state
+  # or
+  # terraform init -reconfigure
 }
 
 provider "aws" {
@@ -44,6 +54,8 @@ resource "slack-token_refresh" "config" {
   # Generate a new "App Configuration Token" via https://api.slack.com/authentication/config-tokens
   # Copy the "Refresh Token", it should start `xoxe-...`
   # Then run `terraform import slack-token_refresh.config xoxe-...`
+  # リフレッシュトークンからアクセストークンを更新するには、以下のコマンドで先に更新する
+  # terraform apply -auto-approve -target slack-token_refresh.config
 }
 
 provider "slack-app" {
