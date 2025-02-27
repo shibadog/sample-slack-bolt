@@ -1,0 +1,39 @@
+{
+  "name": "sample-slack-bolt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean": "tsc --build ./tsconfig.json --clean",
+    "build": "tsc",
+    "postbuild": "copyfiles -u 2 ./src/main/config/* ./dist",
+    "start": "cross-env NODE_CONFIG_DIR=./dist/config node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shibadog/sample-slack-bolt.git"
+  },
+  "author": "shibadog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shibadog/sample-slack-bolt/issues"
+  },
+  "homepage": "https://github.com/shibadog/sample-slack-bolt#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/config": "^3.3.5",
+    "@types/js-yaml": "^4.0.9",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "tslint": "^5.20.1",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@slack/bolt": "^4.2.0",
+    "@types/node": "^22.13.5",
+    "config": "^3.3.12",
+    "js-yaml": "^4.1.0",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
+  }
+}
